@@ -23,10 +23,8 @@ let config = {
 	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 }
 
-			
-
 const script = document.createElement('script');
-script.src = 'https://grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
+script.src = `${config.host}/resources/assets/external/requirejs/require.js`;
 
 script.onload = async () => {
 	require.config( {
