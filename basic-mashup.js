@@ -38,7 +38,7 @@ script.onload = async () => {
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
   };
 
-requirejs( ['js/qlik'], function ( qlik ) {
+requirejs( ['js/qlik'], async ( qlik ) => {
     const app = qlik.openApp(config.appId);
     app.getObject('CurrentSelections', 'CurrentSelections');
 
@@ -55,4 +55,4 @@ requirejs( ['js/qlik'], function ( qlik ) {
 	app.getObject('QV04','PAppmU', {noSelections:"true"});
 	//create cubes and lists -- inserted here --
 
-} );
+});
