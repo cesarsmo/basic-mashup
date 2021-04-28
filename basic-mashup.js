@@ -26,17 +26,6 @@ let config = {
 const script = document.createElement('script');
 script.src = 'grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
 
-// script.onload = async () => {
-	require.config( {
-		baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
-		webIntegrationId: config.webIntegrationId
-	} );
-  
-	// build a single-sign on URL and return back here once completed:
-	const loginUrl = new URL(`${baseUrl}/login`);
-	loginUrl.searchParams.append('returnto', location.href);
-	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
-// }
 
 require( ["js/qlik"], function ( qlik ) {
 
@@ -65,3 +54,15 @@ require( ["js/qlik"], function ( qlik ) {
 	app.getObject('QV04','PAppmU', {noSelections:"true"});
 	//create cubes and lists -- inserted here --
 });
+
+script.onload = async () => {
+	require.config( {
+		baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
+		webIntegrationId: config.webIntegrationId
+	} );
+  
+	// build a single-sign on URL and return back here once completed:
+	const loginUrl = new URL(`${baseUrl}/login`);
+	loginUrl.searchParams.append('returnto', location.href);
+	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
+}
