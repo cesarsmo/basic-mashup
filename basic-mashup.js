@@ -37,15 +37,11 @@ script.onload = async () => {
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
   };
 
-require( ["js/qlik"], function ( qlik ) {
-	qlik.on( "error", function ( error ) {
-		$( '#popupText' ).append( error.message + "<br>" );
-		$( '#popup' ).fadeIn( 1000 );
-	} );
-	$( "#closePopup" ).click( function () {
-		$( '#popup' ).hide();
-	} );
-
+require( ["js/qlik"], async ( qlik ) => {
+    const app = qlik.openApp(appIds.length ? appIds[0] : config.appId, config);
+    app.on('error', renderError);
+    app.getObject('CurrentSelections', 'CurrentSelections');
+	
 	//callbacks -- inserted here --
 	//open apps -- inserted here --
 	// var app = qlik.openApp('4aef20d3-a3a7-4e93-9e65-70f11b624521', config);
