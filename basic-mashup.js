@@ -38,7 +38,7 @@ script.onload = async () => {
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
   };
 
-requirejs( ['js/qlik'], async ( qlik ) => {
+require( ['js/qlik'], async ( qlik ) => {
     const app = qlik.openApp(config.appId);
     app.getObject('CurrentSelections', 'CurrentSelections');
 
