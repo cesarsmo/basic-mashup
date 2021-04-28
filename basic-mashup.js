@@ -39,8 +39,7 @@ script.onload = async () => {
   };
 
 requirejs( ['js/qlik'], function ( qlik ) {
-    const app = qlik.openApp(appIds.length ? appIds[0] : config.appId, config);
-    app.on('error', renderError);
+    const app = qlik.openApp(config.appId);
     app.getObject('CurrentSelections', 'CurrentSelections');
 
 	//callbacks -- inserted here --
