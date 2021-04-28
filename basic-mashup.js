@@ -23,6 +23,8 @@ let config = {
 	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 }
 
+const { getUser, getTenant, getAppList, baseUrl } = require('./comm');
+
 const script = document.createElement('script');
 script.src = 'grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
 
@@ -37,6 +39,7 @@ script.onload = async () => {
 	loginUrl.searchParams.append('returnto', location.href);
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
 
+	const [user, tenant] = await Promise.all([getUser(), getTenant()]);
 
 	require( ["js/qlik"], function ( qlik ) {
 
