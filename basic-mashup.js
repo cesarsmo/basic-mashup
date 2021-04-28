@@ -24,7 +24,7 @@ let config = {
 
 require.config( {
     // baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
-	baseUrl: 'https://grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js',
+	baseUrl: 'https://grupoitg-nordica.us.qlikcloud.com/resources',
     webIntegrationId: config.webIntegrationId
 } );
 
