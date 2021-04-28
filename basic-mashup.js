@@ -20,7 +20,7 @@ let config = {
 	port: 443,
 	isSecure: true,
 	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli'
-}
+} 
 
 require.config( {
     baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
