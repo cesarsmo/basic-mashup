@@ -19,7 +19,8 @@ let config = {
 	prefix: '/',
 	port: 443,
 	isSecure: true,
-	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli'
+	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli',
+	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 }
 
 const script = document.createElement('script');
@@ -46,7 +47,7 @@ require( ['js/qlik'], async ( qlik ) => {
 	//open apps -- inserted here --
 	// var app = qlik.openApp('4aef20d3-a3a7-4e93-9e65-70f11b624521', config);
 	// var app = qlik.openApp('Helpdesk Management.qvf', config);
-	var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
+	// var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
 
 	//get objects -- inserted here --
 	app.getObject('QV03','JARjh');
