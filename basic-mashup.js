@@ -27,6 +27,8 @@ require.config( {
     webIntegrationId: config.webIntegrationId
 } );
 
+const script = document.createElement('script');
+script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 
 script.onload = async () => {
 	requirejs.config({
