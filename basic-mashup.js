@@ -23,7 +23,7 @@ let config = {
 }
 
 const script = document.createElement('script');
-script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
+script.src = 'https://grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
 
 script.onload = async () => {
 	requirejs.config({
