@@ -24,7 +24,7 @@ let config = {
 }
 
 const script = document.createElement('script');
-script.src = `${config.host}/resources/assets/external/requirejs/require.js`;
+script.src = 'grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
 
 script.onload = async () => {
 	require.config( {
