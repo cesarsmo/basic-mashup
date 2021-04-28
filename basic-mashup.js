@@ -36,7 +36,7 @@ const script = document.createElement('script');
 script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 
 script.onload = async () => {
-	requirejs.config({
+	require.config({
 	  baseUrl: baseUrl + '/resources',
 	  webIntegrationId: config.webIntegrationId
 	});
@@ -45,28 +45,6 @@ script.onload = async () => {
 	const loginUrl = new URL(`${baseUrl}/login`);
 	loginUrl.searchParams.append('returnto', location.href);
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
-	
-	const loginBtn = document.querySelector('#login');
-	loginBtn.addEventListener('click', () => { location.href = loginUrl; });
-	
-	const logoutBtn = document.querySelector('#logout');
-	logoutBtn.addEventListener('click', () => { location.href = new URL(`${baseUrl}/logout`); });
-  
-	const [user, tenant] = await Promise.all([getUser(), getTenant()]);
-	if (user || tenant) {
-	  loginBtn.disabled = true;
-	  logoutBtn.disabled = false;
-	  document.querySelector('.logged_in').style.opacity = 0;
-	  document.querySelector('.logged_out').style.opacity = 1;
-	  document.querySelector('#user').innerHTML = user.name;
-	  document.querySelector('#tenant').innerHTML = tenant.name;
-	  initMashup();
-	} else {
-	  loginBtn.disabled = false;
-	  logoutBtn.disabled = true;
-	  document.querySelector('.logged_in').style.opacity = 1;
-	  document.querySelector('.logged_out').style.opacity = 0;
-	}
   };
 
 require( ["js/qlik"], function ( qlik ) {
