@@ -32,7 +32,7 @@ const script = document.createElement('script');
 script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 
 script.onload = async () => {
-	requirejs.config({
+	require.config({
 		baseUrl: baseUrl + '/resources',
 		webIntegrationId: config.webIntegrationId
 	  });
