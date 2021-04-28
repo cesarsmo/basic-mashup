@@ -19,28 +19,44 @@ let config = {
 	prefix: '/',
 	port: 443,
 	isSecure: true,
-	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli'
+	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli',
+	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 }
 
-require.config( {
-    baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
-    webIntegrationId: config.webIntegrationId
-} );
+const script = document.createElement('script');
+script.src = 'grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
+
+script.onload = async () => {
+	require.config( {
+		baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
+		webIntegrationId: config.webIntegrationId
+	} );
+  
+	// build a single-sign on URL and return back here once completed:
+	const loginUrl = new URL(`${baseUrl}/login`);
+	loginUrl.searchParams.append('returnto', location.href);
+	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
+}
 
 require( ["js/qlik"], function ( qlik ) {
+
 	qlik.on( "error", function ( error ) {
 		$( '#popupText' ).append( error.message + "<br>" );
 		$( '#popup' ).fadeIn( 1000 );
 	} );
+
 	$( "#closePopup" ).click( function () {
 		$( '#popup' ).hide();
 	} );
+
+    const app = qlik.openApp(config.appId);
+    app.getObject('CurrentSelections', 'CurrentSelections');
 
 	//callbacks -- inserted here --
 	//open apps -- inserted here --
 	// var app = qlik.openApp('4aef20d3-a3a7-4e93-9e65-70f11b624521', config);
 	// var app = qlik.openApp('Helpdesk Management.qvf', config);
-	var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
+	// var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
 
 	//get objects -- inserted here --
 	app.getObject('QV03','JARjh');
@@ -49,4 +65,4 @@ require( ["js/qlik"], function ( qlik ) {
 	app.getObject('QV04','PAppmU', {noSelections:"true"});
 	//create cubes and lists -- inserted here --
 
-} );
+});
