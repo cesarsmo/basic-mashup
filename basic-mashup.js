@@ -26,7 +26,7 @@ let config = {
 const script = document.createElement('script');
 script.src = 'grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
 
-// script.onload = async () => {
+script.onload = async () => {
 	require.config( {
 		baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
 		webIntegrationId: config.webIntegrationId
@@ -36,7 +36,7 @@ script.src = 'grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requir
 	const loginUrl = new URL(`${baseUrl}/login`);
 	loginUrl.searchParams.append('returnto', location.href);
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
-// }
+}
 
 require( ["js/qlik"], function ( qlik ) {
 
