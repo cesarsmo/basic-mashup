@@ -23,14 +23,16 @@ let config = {
 	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 }
 
+			
+
 const script = document.createElement('script');
 script.src = 'https://grupoitg-nordica.us.qlikcloud.com/resources/assets/external/requirejs/require.js';
 
 script.onload = async () => {
-	requirejs.config({
-		baseUrl: baseUrl + '/resources',
+	require.config( {
+		baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
 		webIntegrationId: config.webIntegrationId
-	  });
+	} );
   
 	// build a single-sign on URL and return back here once completed:
 	const loginUrl = new URL(`${baseUrl}/login`);
@@ -38,7 +40,17 @@ script.onload = async () => {
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
   };
 
-require( ['js/qlik'], async ( qlik ) => {
+require( ["js/qlik"], function ( qlik ) {
+
+	qlik.on( "error", function ( error ) {
+		$( '#popupText' ).append( error.message + "<br>" );
+		$( '#popup' ).fadeIn( 1000 );
+	} );
+
+	$( "#closePopup" ).click( function () {
+		$( '#popup' ).hide();
+	} );
+
     const app = qlik.openApp(config.appId);
     app.getObject('CurrentSelections', 'CurrentSelections');
 
