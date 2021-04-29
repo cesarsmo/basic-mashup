@@ -14,6 +14,10 @@
 // 	isSecure: window.location.protocol === "https:"
 // };
 
+// Engine do Qlik
+import engine from './QlikEngine';
+
+
 let config = {
 	host: 'grupoitg-nordica.us.qlikcloud.com',
 	prefix: '/',
