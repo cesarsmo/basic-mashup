@@ -30,7 +30,7 @@ require.config( {
 } );
 
 // build a single-sign on URL and return back here once completed:
-const loginUrl = new URL(`${baseUrl}/login`);
+const loginUrl = new URL(baseUrl+'/login');
 loginUrl.searchParams.append('returnto', location.href);
 loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
 
