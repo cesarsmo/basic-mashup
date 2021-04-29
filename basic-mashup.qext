@@ -11,4 +11,4 @@
 	"dependencies": {
 		"qlik-sense": ">=3.0.x"
 	}
-} 
+}
