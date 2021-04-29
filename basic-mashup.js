@@ -13,7 +13,7 @@ var config = {
 		isSecure: true,
 		prefix: '/',
 		webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli',
-		appId: '08e09f10-fb84-49a7-b52d-5e1bc7daff73',
+		appId: '999759c8-696c-4009-9546-0e658a9c6fdc',
 };
 
 require.config( {
@@ -40,7 +40,7 @@ require( ["js/qlik"], function ( qlik ) {
 	//open apps -- inserted here --
 	// var app = qlik.openApp('4aef20d3-a3a7-4e93-9e65-70f11b624521', config);
 	// var app = qlik.openApp('Helpdesk Management.qvf', config);
-	var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
+	var app = qlik.openApp(config.appId, config);
 
 	//get objects -- inserted here --
 	app.getObject('QV03','JARjh');
