@@ -34,7 +34,7 @@ document.head.appendChild(link);
 const script = document.createElement('script');
 script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 
-// script.onload = async () => {
+script.onload = async () => {
 	require.config({
 		baseUrl: baseUrl + '/resources',
 		webIntegrationId: config.webIntegrationId
@@ -53,7 +53,7 @@ script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 		document.querySelector('.logged_in').style.opacity = 1;
 		document.querySelector('.logged_out').style.opacity = 0;
 	  }
-// };
+};
 
 	function initMashup() {
 		requirejs( ["js/qlik"], function ( qlik ) {
