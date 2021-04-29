@@ -34,7 +34,7 @@ document.head.appendChild(link);
 const script = document.createElement('script');
 script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 
-script.onload = async () => {
+// script.onload = async () => {
 	require.config({
 		baseUrl: baseUrl + '/resources',
 		webIntegrationId: config.webIntegrationId
@@ -46,17 +46,9 @@ script.onload = async () => {
 	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
 
 	const [user, tenant] = await Promise.all([getUser(), getTenant()]);	
+// };
 
-	if (user || tenant) {
-		initMashup();
-	  } else {
-		document.querySelector('.logged_in').style.opacity = 1;
-		document.querySelector('.logged_out').style.opacity = 0;
-	  }
-};
-
-	function initMashup() {
-		requirejs( ["js/qlik"], async ( qlik ) => {
+	requirejs( ["js/qlik"], async ( qlik ) => {
 
 			qlik.on( "error", function ( error ) {
 				$( '#popupText' ).append( error.message + "<br>" );
@@ -83,4 +75,3 @@ script.onload = async () => {
 			app.getObject('QV04','PAppmU', {noSelections:"true"});
 			//create cubes and lists -- inserted here --
 		});
-	}
