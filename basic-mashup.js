@@ -16,10 +16,10 @@ var config = {
 		appId: '08e09f10-fb84-49a7-b52d-5e1bc7daff73',
 };
 
-const baseUrl = (config.isSecure ? 'https://' : 'http://') + config.host + (config.port ? ':' + config.port : '');
+const baseUrl = (config.isSecure ? 'https://' : 'http://') + config.host;
 
 require.config( {
-    baseUrl: baseUrl + config.prefix + "resources",
+    baseUrl: baseUrl + (config.port ? ':' + config.port : '') + config.prefix + "resources",
     webIntegrationId: config.webIntegrationId
 } );
 
