@@ -14,6 +14,8 @@
 // 	isSecure: window.location.protocol === "https:"
 // };
 
+const { getUser, getTenant, getAppList, baseUrl } = require('./comm');
+
 let config = {
 	host: 'grupoitg-nordica.us.qlikcloud.com',
 	prefix: '/',
@@ -28,7 +30,7 @@ require.config( {
 } );
 
 // build a single-sign on URL and return back here once completed:
-const loginUrl = new URL(`${config.host}/login`);
+const loginUrl = new URL(`${baseUrl}/login`);
 loginUrl.searchParams.append('returnto', location.href);
 loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
 
