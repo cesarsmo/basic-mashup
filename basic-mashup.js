@@ -55,7 +55,7 @@ script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 	  }
 // };
 
-	async function initMashup() {
+	function initMashup() {
 		require( ["js/qlik"], function ( qlik ) {
 
 			qlik.on( "error", function ( error ) {
