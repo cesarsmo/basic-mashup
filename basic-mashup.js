@@ -9,7 +9,7 @@
 
 let config = {
 		host: 'https://grupoitg-nordica.us.qlikcloud.com',
-		port: '443',
+		port: 443,
 		isSecure: true,
 		prefix: '/',
 		webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli',
