@@ -22,6 +22,7 @@
 // 	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli',
 // 	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 // }
+require('babel-polyfill');
 
 const config = require('./config');
 const { getUser, getTenant, getAppList, baseUrl } = require('./comm');
