@@ -14,7 +14,8 @@
 // 	isSecure: window.location.protocol === "https:"
 // };
 
-import baseUrl from './comm';
+const comm = require('./comm');
+const baseUrl = comm.baseUrl;
 
 let config = {
 	host: 'grupoitg-nordica.us.qlikcloud.com',
