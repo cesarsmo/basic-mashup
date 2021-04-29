@@ -38,7 +38,7 @@ script.onload = async () => {
 	require.config({
 		baseUrl: baseUrl + '/resources',
 		webIntegrationId: config.webIntegrationId
-	  });
+	});
 
 	// build a single-sign on URL and return back here once completed:
 	const loginUrl = new URL(`${baseUrl}/login`);
@@ -47,31 +47,40 @@ script.onload = async () => {
 
 	const [user, tenant] = await Promise.all([getUser(), getTenant()]);	
 
-	require( ["js/qlik"], function ( qlik ) {
+	if (user || tenant) {
+		initMashup();
+	  } else {
+		document.querySelector('.logged_in').style.opacity = 1;
+		document.querySelector('.logged_out').style.opacity = 0;
+	  }
+};
 
-		qlik.on( "error", function ( error ) {
-			$( '#popupText' ).append( error.message + "<br>" );
-			$( '#popup' ).fadeIn( 1000 );
-		} );
+	async function initMashup() {
+		require( ["js/qlik"], function ( qlik ) {
 
-		$( "#closePopup" ).click( function () {
-			$( '#popup' ).hide();
-		} );
+			qlik.on( "error", function ( error ) {
+				$( '#popupText' ).append( error.message + "<br>" );
+				$( '#popup' ).fadeIn( 1000 );
+			} );
 
-		const app = qlik.openApp(config.appId);
-		app.getObject('CurrentSelections', 'CurrentSelections');
+			$( "#closePopup" ).click( function () {
+				$( '#popup' ).hide();
+			} );
 
-		//callbacks -- inserted here --
-		//open apps -- inserted here --
-		// var app = qlik.openApp('4aef20d3-a3a7-4e93-9e65-70f11b624521', config);
-		// var app = qlik.openApp('Helpdesk Management.qvf', config);
-		// var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
+			const app = qlik.openApp(config.appId);
+			app.getObject('CurrentSelections', 'CurrentSelections');
 
-		//get objects -- inserted here --
-		app.getObject('QV03','JARjh');
-		app.getObject('QV02','jTuCwkB');
-		app.getObject('QV01','JsVPe');
-		app.getObject('QV04','PAppmU', {noSelections:"true"});
-		//create cubes and lists -- inserted here --
-	});
-}
+			//callbacks -- inserted here --
+			//open apps -- inserted here --
+			// var app = qlik.openApp('4aef20d3-a3a7-4e93-9e65-70f11b624521', config);
+			// var app = qlik.openApp('Helpdesk Management.qvf', config);
+			// var app = qlik.openApp('999759c8-696c-4009-9546-0e658a9c6fdc', config);
+
+			//get objects -- inserted here --
+			app.getObject('QV03','JARjh');
+			app.getObject('QV02','jTuCwkB');
+			app.getObject('QV01','JsVPe');
+			app.getObject('QV04','PAppmU', {noSelections:"true"});
+			//create cubes and lists -- inserted here --
+		});
+	}
