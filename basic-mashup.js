@@ -14,10 +14,7 @@
 // 	isSecure: window.location.protocol === "https:"
 // };
 
-import baseUrl from './comm.js';
-import config from './config.js';
-
-import * as config from './config.js';
+const config = require('./config');
 
 require.config( {
     baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",

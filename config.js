@@ -13,7 +13,7 @@ const appId = url.searchParams.get('app') || '08e09f10-fb84-49a7-b52d-5e1bc7daf
 
 const tenant = new URL(tenantUrl);
 
-export default {
+module.exports = {
   host: tenant.hostname,
   port: tenant.port || 443,
   isSecure: true,

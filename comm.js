@@ -44,7 +44,8 @@ function getTenant() {
 function getAppList() {
   return _request('/api/v1/items?limit=40').then(_deserialize);
 }
-export default {
+
+module.exports = {
   getUser,
   getTenant,
   getAppList,
