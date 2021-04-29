@@ -56,7 +56,7 @@ script.onload = async () => {
 };
 
 	function initMashup() {
-		requirejs( ["js/qlik"], function ( qlik ) {
+		requirejs( ["js/qlik"], async ( qlik ) => {
 
 			qlik.on( "error", function ( error ) {
 				$( '#popupText' ).append( error.message + "<br>" );
