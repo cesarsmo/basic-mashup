@@ -7,12 +7,14 @@
  */
 // var prefix = window.location.pathname.substr( 0, window.location.pathname.toLowerCase().lastIndexOf( "/extensions" ) + 1 );
 
-// var config = {
-// 	host: window.location.hostname,
-// 	prefix: prefix,
-// 	port: window.location.port,
-// 	isSecure: window.location.protocol === "https:"
-// };
+var config = {
+		host: 'https://grupoitg-nordica.us.qlikcloud.com',
+		port: '443',
+		isSecure: true,
+		prefix: '/',
+		webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli',
+		appId: '08e09f10-fb84-49a7-b52d-5e1bc7daff73',
+};
 
 const config = require('./config');
 
