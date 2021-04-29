@@ -48,7 +48,7 @@ script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 	const [user, tenant] = await Promise.all([getUser(), getTenant()]);	
 // };
 
-	requirejs( ["js/qlik"], async ( qlik ) => {
+	requirejs( ["js/qlik"], function ( qlik ) {
 
 			qlik.on( "error", function ( error ) {
 				$( '#popupText' ).append( error.message + "<br>" );
@@ -74,4 +74,4 @@ script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 			app.getObject('QV01','JsVPe');
 			app.getObject('QV04','PAppmU', {noSelections:"true"});
 			//create cubes and lists -- inserted here --
-		});
+	});
