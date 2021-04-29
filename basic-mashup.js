@@ -14,15 +14,10 @@
 // 	isSecure: window.location.protocol === "https:"
 // };
 
-import baseUrl from './comm';
+import baseUrl from './comm.js';
+import config from './config.js';
 
-let config = {
-	host: 'grupoitg-nordica.us.qlikcloud.com',
-	prefix: '/',
-	port: 443,
-	isSecure: true,
-	webIntegrationId: 'zQLeIH8-uf87QC9JyLRsdrdZpvhVlkli'
-}
+import * as config from './config.js';
 
 require.config( {
     baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
