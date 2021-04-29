@@ -38,6 +38,7 @@ const engine = {
                 });
             });
         }, () => {
+            
             console.log('Redirecting to Qlik Cloud...');
             const returnTo = encodeURIComponent(window.location.href);
             window.location.href = `${tenantUri}/login?returnto=${returnTo}&qlik-web-integration-id=${config.webIntegrationId}`;
@@ -147,7 +148,7 @@ require.config( {
     webIntegrationId: config.webIntegrationId
 } );
 
-  engine.connectQCS(config).then(qlik => {
+engine.connectQCS(config).then(qlik => {
 // require( ["js/qlik"], function ( qlik ) {
 	qlik.on( "error", function ( error ) {
 		$( '#popupText' ).append( error.message + "<br>" );
