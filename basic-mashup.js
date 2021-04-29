@@ -27,6 +27,17 @@ require.config( {
     webIntegrationId: config.webIntegrationId
 } );
 
+  // build a single-sign on URL and return back here once completed:
+  const loginUrl = new URL(( config.isSecure ? "https://" : "http://" ) + config.host+ '/login');
+  loginUrl.searchParams.append('returnto', location.href);
+  loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
+  
+  const loginBtn = document.querySelector('#login');
+  loginBtn.addEventListener('click', () => { location.href = loginUrl; });
+  
+  const logoutBtn = document.querySelector('#logout');
+  logoutBtn.addEventListener('click', () => { location.href = new URL(( config.isSecure ? "https://" : "http://" ) + config.host+ '/logout'); });
+
 require( ["js/qlik"], function ( qlik ) {
 	qlik.on( "error", function ( error ) {
 		$( '#popupText' ).append( error.message + "<br>" );
