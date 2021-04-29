@@ -38,7 +38,8 @@ require.config( {
   const logoutBtn = document.querySelector('#logout');
   logoutBtn.addEventListener('click', () => { location.href = new URL(( config.isSecure ? "https://" : "http://" ) + config.host+ '/logout'); });
 
-require( ["js/qlik"], function ( qlik ) {
+  engine.connectQCS(config).then(qlik =>{
+// require( ["js/qlik"], function ( qlik ) {
 	qlik.on( "error", function ( error ) {
 		$( '#popupText' ).append( error.message + "<br>" );
 		$( '#popup' ).fadeIn( 1000 );
