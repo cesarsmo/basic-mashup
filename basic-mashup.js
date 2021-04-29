@@ -16,13 +16,15 @@ var config = {
 		appId: '08e09f10-fb84-49a7-b52d-5e1bc7daff73',
 };
 
+const baseUrl = (config.isSecure ? 'https://' : 'http://') + config.host + (config.port ? ':' + config.port : '');
+
 require.config( {
-    baseUrl: ( config.isSecure ? "https://" : "http://" ) + config.host + (config.port ? ":" + config.port : "") + config.prefix + "resources",
+    baseUrl: baseUrl + config.prefix + "resources",
     webIntegrationId: config.webIntegrationId
 } );
 
 // build a single-sign on URL and return back here once completed:
-const baseUrl = (isSecure ? 'https://' : 'http://') + host + (port ? ':' + port : '');
+
 const loginUrl = new URL(baseUrl+'/login');
 loginUrl.searchParams.append('returnto', location.href);
 loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
