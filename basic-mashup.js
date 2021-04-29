@@ -23,8 +23,8 @@
 // 	appId: '999759c8-696c-4009-9546-0e658a9c6fdc'
 // }
 
-const config = require('./config');
-const { getUser, getTenant, getAppList, baseUrl } = require('./comm');
+const config = requirejs('./config');
+const { getUser, getTenant, getAppList, baseUrl } = requirejs('./comm');
 
 const link = document.createElement('link');
 link.rel = 'stylesheet';
@@ -56,7 +56,7 @@ script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 // };
 
 	function initMashup() {
-		require( ["js/qlik"], function ( qlik ) {
+		requirejs( ["js/qlik"], function ( qlik ) {
 
 			qlik.on( "error", function ( error ) {
 				$( '#popupText' ).append( error.message + "<br>" );
