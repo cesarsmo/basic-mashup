@@ -39,13 +39,6 @@ script.src = `${baseUrl}/resources/assets/external/requirejs/require.js`;
 		baseUrl: baseUrl + '/resources',
 		webIntegrationId: config.webIntegrationId
 	});
-
-	// build a single-sign on URL and return back here once completed:
-	const loginUrl = new URL(`${baseUrl}/login`);
-	loginUrl.searchParams.append('returnto', location.href);
-	loginUrl.searchParams.append('qlik-web-integration-id', config.webIntegrationId);
-
-	const [user, tenant] = await Promise.all([getUser(), getTenant()]);	
 // };
 
 	requirejs( ["js/qlik"], function ( qlik ) {
