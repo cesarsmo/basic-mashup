@@ -5,7 +5,7 @@
 // 	isSecure: window.location.protocol === "https:"
 // };
 
-
+ 
 let config = {
 	host: 'grupoitg-nordica.us.qlikcloud.com',
 	prefix: '/',
